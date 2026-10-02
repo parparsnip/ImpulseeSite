@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impulsee Privacy Policy</title>
+  <meta name="description" content="What the Impulsee app collects, why, who it's shared with, and how to delete it.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="icon.png" alt="" width="56" height="56">
+    <a href="index.html">Impulsee</a>
+  </header>
+
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated 2 October 2026</p>
+
+  <p>Impulsee is a small app for groups of friends to tell each other they're heading out. It's made by Isaac Parsons, an independent developer in Australia ("we", "us"). This page explains what the app collects, why, who else handles it, and how to get it deleted.</p>
+
+  <p>Questions or requests: <a href="mailto:impulsee.app@gmail.com">impulsee.app@gmail.com</a></p>
+
+  <div class="card primary">
+    <h2>The short version</h2>
+    <ul>
+      <li>We collect what the app needs to work: your email, your name, your crews, the events you post, and any photos you add.</li>
+      <li>Your location is used only if you turn on venue search, is blurred to about 100&nbsp;m, and is never stored.</li>
+      <li>Usage stats and crash reports go to Google Firebase. They never include anything you type.</li>
+      <li>No ads, no advertising ID, and we don't sell your data.</li>
+      <li>You can delete your account and its data at any time, in the app or <a href="delete-account.html">by email</a>.</li>
+    </ul>
+  </div>
+
+  <h2>What we collect, and why</h2>
+
+  <h3>Your account</h3>
+  <ul>
+    <li><strong>Email address and password</strong>, to sign you in and to send sign-up confirmation and password reset emails. Your password is stored hashed by our backend provider, Supabase. We never see it.</li>
+    <li><strong>Display name</strong>, shown to people in your crews. It starts as the part of your email before the @, and you can change it in Settings.</li>
+    <li><strong>Profile picture</strong> (optional), shown next to your name in your crews.</li>
+  </ul>
+
+  <h3>What you do in the app</h3>
+  <ul>
+    <li><strong>Crews</strong>: their names, pictures (optional), invite codes, and who's in them.</li>
+    <li><strong>Events</strong> (shouts): the venue, the start time, how big a night it is (1 to 5), an optional note, and who's going.</li>
+    <li><strong>Updates on events</strong>: the text, and a photo if you add one.</li>
+  </ul>
+  <p>All of this is visible to the members of the crew it belongs to, and to nobody else in the app. Photos are stored at long, random web addresses that can't be guessed, but anyone who is given one of those addresses can open the photo.</p>
+
+  <h3>Notifications</h3>
+  <ul>
+    <li><strong>Push token</strong>: an identifier for your phone that lets us send it notifications about your crews. It's removed when you log out, turn notifications off, or delete your account.</li>
+  </ul>
+
+  <h3>Location (only if you turn it on)</h3>
+  <p>When you're posting an event you can switch on venue search to see nearby pubs and bars. Only then does the app ask for location permission, and only while it's open. Your position is rounded to about 100&nbsp;m before it leaves your phone, and is sent with what you type in the venue box to Google Places to find matching places. We don't store your location anywhere. If you leave venue search off, the app never reads your location.</p>
+
+  <h3>Usage statistics and crash reports</h3>
+  <p>We use Google Firebase Analytics and Firebase Crashlytics to see which parts of the app get used and to fix crashes.</p>
+  <ul>
+    <li><strong>Analytics</strong> records things like app opens, which screens are viewed, and taps such as "I'm in" or turning a setting on or off. Each record is a fixed event name with numbers or on/off flags. <strong>It never includes anything you type or read</strong>: no names, venues, notes, updates, crew names, emails or invite codes.</li>
+    <li><strong>Crash reports</strong> include what the app was doing when it crashed, your device model, operating system version and app version.</li>
+    <li>Both are linked to your account's random ID (a string of letters and numbers, not your name or email) so a crash can be matched to the account that hit it.</li>
+    <li>Firebase also works out an approximate location (country and city) from your internet address, and assigns your phone its own Firebase ID.</li>
+    <li>We don't collect your phone's advertising ID. It's blocked in the app.</li>
+  </ul>
+
+  <h3>Stored only on your phone</h3>
+  <p>Your app settings (notifications on or off, venue search on or off, display mode, and whether you've seen the intro screens) are kept on your phone and never sent to us.</p>
+
+  <h2>Who else handles your data</h2>
+  <p>We use these service providers to run the app. They handle data on our behalf, only for the purpose listed.</p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>What it does for Impulsee</th><th>What it receives</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Provider"><strong>Supabase</strong><br><a href="https://supabase.com/privacy">Privacy policy</a></td>
+          <td data-label="What it does for Impulsee">Our backend: sign-in, database, photo storage, and the server functions that send notifications, find venues and delete accounts.</td>
+          <td data-label="What it receives">Everything listed under "Your account", "What you do in the app" and "Notifications".</td>
+        </tr>
+        <tr>
+          <td data-label="Provider"><strong>Expo push service</strong> (Expo)<br><a href="https://expo.dev/privacy">Privacy policy</a></td>
+          <td data-label="What it does for Impulsee">Passes our notifications on to your phone.</td>
+          <td data-label="What it receives">Your push token and the notification's text, which can include names, the venue, the crew name and the text of an update.</td>
+        </tr>
+        <tr>
+          <td data-label="Provider"><strong>Firebase Cloud Messaging</strong> (Google)<br><a href="https://firebase.google.com/support/privacy">Privacy and security</a></td>
+          <td data-label="What it does for Impulsee">Delivers notifications to Android phones, on behalf of Expo.</td>
+          <td data-label="What it receives">Your phone's messaging token and the notification.</td>
+        </tr>
+        <tr>
+          <td data-label="Provider"><strong>Google Places API</strong> (Google)<br><a href="https://policies.google.com/privacy">Privacy policy</a></td>
+          <td data-label="What it does for Impulsee">Suggests venues when venue search is on.</td>
+          <td data-label="What it receives">Your rounded location and what you've typed in the venue box. Only when venue search is on.</td>
+        </tr>
+        <tr>
+          <td data-label="Provider"><strong>Firebase Analytics and Crashlytics</strong> (Google)<br><a href="https://firebase.google.com/support/privacy">Privacy and security</a></td>
+          <td data-label="What it does for Impulsee">Usage statistics and crash reports.</td>
+          <td data-label="What it receives">As described above. Your account's random ID, device details, approximate location from your internet address. Never anything you type.</td>
+        </tr>
+        <tr>
+          <td data-label="Provider"><strong>Gmail</strong> (Google)<br><a href="https://policies.google.com/privacy">Privacy policy</a></td>
+          <td data-label="What it does for Impulsee">Sends sign-up confirmation and password reset emails, and receives your emails to us.</td>
+          <td data-label="What it receives">Your email address, and anything you write to us.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>These providers may store data on servers outside your country. We don't sell your data, share it with advertisers, or show ads. We'd only disclose it to anyone else if the law required us to.</p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li><strong>Your account and what you post</strong>: until you delete it. Past events stay in your crews' history so everyone can look back on them, until they're deleted or the account that organised them is deleted.</li>
+    <li><strong>When you delete your account</strong>, your data is removed from our live database and photo storage straight away. See <a href="delete-account.html">what gets deleted</a>.</li>
+    <li><strong>Usage statistics</strong> are kept by Firebase Analytics for up to 14 months, and <strong>crash reports</strong> by Crashlytics for 90 days. After your account is deleted these are linked only to a random ID that no longer matches anyone.</li>
+    <li><strong>Emails you send us</strong> are kept for as long as we need them to deal with what you asked.</li>
+  </ul>
+
+  <h2>Deleting your account</h2>
+  <p>In the app: <strong>Settings → Delete account</strong>. Deleted the app already? Email <a href="mailto:impulsee.app@gmail.com">impulsee.app@gmail.com</a>. The <a href="delete-account.html">account deletion page</a> has the details, including exactly what is deleted and what isn't.</p>
+
+  <h2>Your choices and rights</h2>
+  <ul>
+    <li>Change your name and profile picture, and turn notifications and venue search on or off, in the app at any time.</li>
+    <li>Ask us for a copy of your data, to correct it, or to delete it, by emailing <a href="mailto:impulsee.app@gmail.com">impulsee.app@gmail.com</a>. We'll reply within 30 days.</li>
+    <li>Depending on where you live (for example under Australia's Privacy Act or the EU and UK GDPR), you may have further rights, including to complain to your local privacy regulator. We'll honour them.</li>
+  </ul>
+
+  <h2>Security</h2>
+  <p>Everything between the app and our servers is encrypted in transit (HTTPS). Access rules on the database mean only members of a crew can read that crew's events, updates and member list. No system is perfectly secure, but we only collect what the app needs, which keeps the risk small.</p>
+
+  <h2>Age</h2>
+  <p>Impulsee is for people aged 18 and over. We don't knowingly collect data from anyone younger. If you think someone under 18 is using it, email us and we'll delete their account.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If we change what we collect or who we share it with, we'll update this page and the date at the top before the change reaches the app.</p>
+
+  <footer>
+    <a href="index.html">Impulsee</a>
+    <a href="delete-account.html">Delete your account</a>
+    <a href="mailto:impulsee.app@gmail.com">Contact</a>
+  </footer>
+</div>
+</body>
+</html>
