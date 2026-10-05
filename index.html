@@ -6,28 +6,133 @@
   <title>Impulsee</title>
   <meta name="description" content="Impulsee: tell your friends you're heading out.">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body>
-<div class="wrap">
-  <header class="top">
-    <img src="icon.png" alt="" width="56" height="56">
-    <a href="index.html">Impulsee</a>
-  </header>
+<body class="home">
+<div class="shell">
 
-  <h1>Say it before you think twice.</h1>
-  <p>Impulsee is a small app for groups of friends to tell each other they're heading out, and see who's coming.</p>
+  <!-- Background collage: bits of the app plus doodles. Purely decorative. -->
+  <div class="collage" aria-hidden="true">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
 
-  <div class="card">
-    <h2>Pages</h2>
-    <ul>
-      <li><a href="terms.html">Terms and conditions</a></li>
-      <li><a href="privacy.html">Privacy policy</a></li>
-      <li><a href="delete-account.html">Delete your account</a></li>
-    </ul>
+    <!-- App pieces -->
+    <div class="bit c-shout" data-d="18">
+      <div class="shout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 10v4h3l9 5V5l-9 5H3z"/><path d="M6.5 14.5 8 19h2.5l-1.2-3.8"/><path d="M18.5 9a4 4 0 0 1 0 6"/></svg>
+        Send a shout
+      </div>
+    </div>
+
+    <div class="bit c-howbig" data-d="26">
+      <div class="panel panel-cream">
+        <span class="chip chip-yellow">How big</span>
+        <div class="bigpill pill-yellow">Proper night</div>
+        <div class="slider"><span class="fill"></span><span class="thumb"><i></i><i></i><i></i></span><b></b><b></b><b></b><b></b></div>
+      </div>
+    </div>
+
+    <div class="bit c-when hide-sm" data-d="22">
+      <div class="panel panel-peach">
+        <span class="chip chip-orange">When</span>
+        <div class="when-row"><span class="sq">&minus;</span><span class="time">12:30 pm<small>today</small></span><span class="sq">+</span></div>
+        <div class="pills"><span class="pill pill-orange">Now</span><span class="pill">In 30 min</span><span class="pill">In 1 hr</span></div>
+      </div>
+    </div>
+
+    <div class="bit c-carnage" data-d="14">
+      <div class="bigpill pill-red">Carnage</div>
+    </div>
+
+    <div class="bit c-crew hide-md" data-d="30">
+      <div class="panel panel-yellow">
+        <div class="crew-title">Start a crew</div>
+        <span class="label">Crew name</span>
+        <div class="input">The Usual Suspects</div>
+        <div class="bigpill pill-amber">Create crew</div>
+      </div>
+    </div>
+
+    <div class="bit c-imin hide-sm" data-d="12">
+      <div class="avatars"><span>JS</span><span>MK</span><span>AL</span></div>
+      <span class="pill pill-ink">I'm in</span>
+    </div>
+
+    <div class="bit c-30 hide-md" data-d="10"><span class="pill">In 2 hrs</span></div>
+    <div class="bit c-plus" data-d="20"><span class="sq">+</span></div>
+
+    <!-- Doodles -->
+    <div class="bit a-quiet" data-d="8"><div class="bigpill pill-yellow">Quiet one</div></div>
+    <div class="bit a-whenchip" data-d="16"><span class="chip chip-orange">When</span></div>
+
+    <svg class="bit d-squig1" data-d="10" viewBox="0 0 200 40" fill="none"><path d="M6 26 C 22 4, 38 4, 50 20 S 78 36, 94 20 S 122 4, 138 20 S 166 36, 194 14" stroke="#1e1b14" stroke-width="7" stroke-linecap="round"/></svg>
+    <svg class="bit d-squig2" data-d="14" viewBox="0 0 200 40" fill="none"><path d="M6 26 C 22 4, 38 4, 50 20 S 78 36, 94 20 S 122 4, 138 20 S 166 36, 194 14" stroke="#ff8a1f" stroke-width="9" stroke-linecap="round"/></svg>
+    <svg class="bit d-zig hide-sm" data-d="12" viewBox="0 0 160 40" fill="none"><path d="M4 30 L24 10 L44 30 L64 10 L84 30 L104 10 L124 30 L144 10 L156 22" stroke="#1e1b14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="bit d-arrow hide-sm" data-d="8" viewBox="0 0 140 120" fill="none"><path d="M10 14 C 70 0, 120 30, 90 64 C 70 86, 40 60, 62 44 C 84 30, 118 60, 112 104" stroke="#1e1b14" stroke-width="5" stroke-linecap="round"/><path d="M98 92 L112 106 L126 90" stroke="#1e1b14" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="bit a-1hr" data-d="6"><span class="pill">In 1 hr</span></div>
+
+    <span class="bit d-ring" data-d="4"></span>
+    <div class="bit a-now" data-d="20"><span class="pill pill-orange">Now</span></div>
+    <div class="bit a-mega" data-d="24"><span class="megabtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path d="M3 10v4h3l9 5V5l-9 5H3z"/><path d="M6.5 14.5 8 19h2.5l-1.2-3.8"/><path d="M18.5 9a4 4 0 0 1 0 6"/></svg></span></div>
+    <div class="bit a-howchip hide-sm" data-d="18"><span class="chip chip-yellow">How big</span></div>
+    <span class="bit d-grid hide-sm" data-d="5"></span>
   </div>
 
-  <p>Contact: <a href="mailto:impulsee.app@gmail.com">impulsee.app@gmail.com</a></p>
+  <main class="hero">
+    <div class="brand">
+      <img class="logo" src="icon.png" alt="" width="160" height="160">
+      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <circle cx="60" cy="60" r="58" fill="#1e1b14"/>
+        <text><textPath href="#circ" textLength="272" lengthAdjust="spacing">HEADING OUT • WHO'S COMING •</textPath></text>
+        <circle cx="60" cy="60" r="16" fill="#ffc629" stroke="#fffbec" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <h1 class="mega">Impulsee</h1>
+    <p class="lede">A small app for groups of friends to tell each other they're heading out, and see who's coming.</p>
+
+    <nav class="dash" aria-label="Site pages">
+      <a class="tile t-white" href="terms.html"><span>Terms</span><small>The rules for using Impulsee</small><i>&#8599;</i></a>
+      <a class="tile t-yellow" href="privacy.html"><span>Privacy</span><small>What we collect and why</small><i>&#8599;</i></a>
+      <a class="tile t-orange" href="delete-account.html"><span>Delete account</span><small>Remove your data for good</small><i>&#8599;</i></a>
+      <a class="tile t-ink" href="mailto:impulsee.app@gmail.com"><span>Contact</span><small>impulsee.app@gmail.com</small><i>&#8599;</i></a>
+    </nav>
+    <footer class="ack">
+      <div class="flags">
+        <img src="flag-aboriginal.png" alt="Aboriginal flag" width="60" height="42">
+        <img src="flag-torres-strait.png" alt="Torres Strait Islander flag" width="60" height="42">
+      </div>
+      <p>Impulsee &amp; its development team acknowledges the Wurundjeri Woi-wurrung and Bunurong peoples of the Kulin Nation, Traditional Owners of the land known as Naarm, and pays respect to their cultures and Elders past, present and emerging.</p>
+    </footer>
+  </main>
+
 </div>
+
+<script>
+  // Gentle parallax: collage bits drift with the pointer (desktop only, respects reduced motion).
+  (function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(pointer: fine)').matches) return;
+    var bits = document.querySelectorAll('.collage [data-d]');
+    var tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    addEventListener('pointermove', function (e) {
+      tx = e.clientX / innerWidth - 0.5;
+      ty = e.clientY / innerHeight - 0.5;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+    function tick() {
+      x += (tx - x) * 0.08; y += (ty - y) * 0.08;
+      for (var i = 0; i < bits.length; i++) {
+        var d = +bits[i].dataset.d;
+        bits[i].style.translate = (-x * d * 2).toFixed(1) + 'px ' + (-y * d * 2).toFixed(1) + 'px';
+      }
+      raf = (Math.abs(tx - x) > 0.001 || Math.abs(ty - y) > 0.001) ? requestAnimationFrame(tick) : 0;
+    }
+  })();
+</script>
 </body>
 </html>
