@@ -97,6 +97,7 @@
     <p class="lede">A small app for groups of friends to tell each other they're heading out, and see who's coming.</p>
 
     <nav class="dash" aria-label="Site pages">
+      <button type="button" class="tile t-beta" id="beta-open" aria-haspopup="dialog"><em class="tag">iOS + Android</em><span>Sign up for beta!</span><small>Get early access before launch</small><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></i></button>
       <a class="tile t-white" href="terms.html"><span>Terms</span><small>The rules for using Impulsee</small><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></i></a>
       <a class="tile t-yellow" href="privacy.html"><span>Privacy</span><small>What we collect and why</small><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></i></a>
       <a class="tile t-orange" href="delete-account.html"><span>Delete account</span><small>Remove your data for good</small><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></i></a>
@@ -111,9 +112,114 @@
     </footer>
   </main>
 
+
+  <dialog class="beta" id="beta" aria-labelledby="beta-title">
+    <button type="button" class="beta-close" id="beta-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+
+    <form id="beta-form" novalidate>
+      <span class="chip chip-orange">Beta</span>
+      <h2 id="beta-title">Sign up for beta!</h2>
+      <p class="beta-sub">Pick your phone and drop your email. We'll send you an invite when the beta opens.</p>
+
+      <fieldset class="os">
+        <legend>Your phone</legend>
+        <label class="os-btn">
+          <input type="radio" name="platform" value="iOS" required>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>iOS</span>
+        </label>
+        <label class="os-btn">
+          <input type="radio" name="platform" value="Android">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M1.5 19.5a10.5 10.5 0 0 1 21 0zM7.5 14.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm9 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/><path d="M6.2 10.6 3.9 6.6M17.8 10.6l2.3-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Android</span>
+        </label>
+      </fieldset>
+
+      <label class="label" for="beta-email">Email</label>
+      <input class="beta-input" id="beta-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+
+      <p class="beta-msg" id="beta-msg" role="alert" aria-live="polite"></p>
+
+      <button type="submit" class="beta-submit" id="beta-submit">Count me in</button>
+    </form>
+
+    <div class="beta-done" id="beta-done" hidden>
+      <span class="chip chip-yellow">You're in</span>
+      <h2>Thanks!</h2>
+      <p class="beta-sub">We'll email you when your beta invite is ready.</p>
+      <button type="button" class="beta-submit" id="beta-ok">Nice</button>
+    </div>
+  </dialog>
+
 </div>
 
 <script>
+  // Beta sign-up. Submissions go straight to a Google Form, which saves them
+  // to a linked Google Sheet. To set up, fill in the three values below
+  // (see the comment at the bottom of this script for how to find them).
+  var BETA_FORM = {
+    action:   'https://docs.google.com/forms/d/e/1FAIpQLSddgK2g59N4QtjQIVsJMZKoltOSDGT-80qS-DcHLefCayUEIA/formResponse',
+    email:    'entry.781287125', // email question
+    platform: 'entry.603509923'  // platform question (iOS / Android)
+  };
+
+  (function () {
+    var dlg = document.getElementById('beta');
+    var form = document.getElementById('beta-form');
+    var done = document.getElementById('beta-done');
+    var msg = document.getElementById('beta-msg');
+    var submit = document.getElementById('beta-submit');
+
+    function open() {
+      form.hidden = false; done.hidden = true; msg.textContent = '';
+      dlg.showModal();
+    }
+    document.getElementById('beta-open').addEventListener('click', open);
+    document.getElementById('beta-close').addEventListener('click', function () { dlg.close(); });
+    document.getElementById('beta-ok').addEventListener('click', function () { dlg.close(); });
+    // Click on the dimmed backdrop closes it.
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    if (location.hash === '#beta') open();
+    form.addEventListener('input', function () { msg.textContent = ''; });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var platform = form.querySelector('input[name="platform"]:checked');
+      var email = form.email.value.trim();
+      if (!platform) { msg.textContent = 'Pick iOS or Android first.'; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'That email doesn\'t look right.'; form.email.focus(); return; }
+      msg.textContent = '';
+
+      // Not set up yet: fall back to a pre-filled email so nothing is lost.
+      if (!BETA_FORM.action) {
+        location.href = 'mailto:impulsee.app@gmail.com?subject=' + encodeURIComponent('Beta sign-up (' + platform.value + ')') +
+          '&body=' + encodeURIComponent('Please add me to the ' + platform.value + ' beta: ' + email);
+        return;
+      }
+
+      var data = new URLSearchParams();
+      data.append(BETA_FORM.email, email);
+      data.append(BETA_FORM.platform, platform.value);
+      submit.disabled = true; submit.textContent = 'Sending…';
+
+      // Google Forms doesn't send CORS headers, so the response is opaque.
+      // A network failure still rejects, which is what we catch.
+      fetch(BETA_FORM.action, { method: 'POST', mode: 'no-cors', body: data })
+        .then(function () { form.reset(); form.hidden = true; done.hidden = false; })
+        .catch(function () { msg.textContent = 'Couldn\'t send. Check your connection and try again.'; })
+        .then(function () { submit.disabled = false; submit.textContent = 'Count me in'; });
+    });
+
+    /* Setup:
+       1. Create a Google Form with two questions:
+          "Email" (short answer) and "Platform" (multiple choice: iOS, Android).
+       2. Responses tab > Link to Sheets to collect them in a spreadsheet.
+       3. Three-dot menu > Get pre-filled link, fill both answers, Get link.
+          The link has ...?usp=pp_url&entry.111=...&entry.222=...
+          Those entry.### names go in BETA_FORM.email and BETA_FORM.platform.
+       4. BETA_FORM.action is the form URL with /viewform swapped for /formResponse. */
+  })();
+
   // Gentle parallax: collage bits drift with the pointer (desktop only, respects reduced motion).
   (function () {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || !matchMedia('(pointer: fine)').matches) return;

@@ -141,6 +141,119 @@ body.home {
 .tile:active { translate: 6px 6px; box-shadow: 0 0 0 var(--ink); }
 .tile:focus-visible { outline: 3px dashed var(--ink); outline-offset: 5px; }
 
+/* ---------- Beta sign-up ---------- */
+
+button.tile { font: inherit; width: 100%; cursor: pointer; }
+
+.t-beta {
+  grid-column: 1 / -1;
+  background: var(--primary);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  rotate: -.6deg;
+}
+.t-beta span { font-size: 30px; }
+.t-beta .tag {
+  position: absolute;
+  top: -14px;
+  right: 64px;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 4px 10px;
+  rotate: 3deg;
+}
+.t-beta i { background: var(--card); }
+
+.beta {
+  width: min(440px, calc(100% - 32px));
+  margin: auto;
+  padding: 28px 24px 24px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--ink);
+  text-align: left;
+}
+.beta::backdrop { background: rgba(30, 27, 20, .55); }
+.beta[open] { animation: pop .22s cubic-bezier(.3, 1.5, .5, 1); }
+@keyframes pop { from { opacity: 0; scale: .92; } }
+
+.beta h2 { font-size: 30px; font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin: 10px 0 6px; }
+.beta-sub { margin: 0 0 20px; font-size: 15px; font-weight: 500; line-height: 1.45; color: var(--ink-soft); }
+
+.beta-close {
+  position: absolute; top: 14px; right: 14px;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  background: var(--card); color: var(--ink);
+  border: 3px solid var(--ink); border-radius: 50%;
+  cursor: pointer;
+}
+.beta-close svg { width: 16px; height: 16px; }
+
+.os { border: 0; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.os legend { padding: 0; margin-bottom: 6px; font-size: 10px; font-weight: 900; letter-spacing: 1.6px; text-transform: uppercase; }
+.os-btn { position: relative; cursor: pointer; }
+.os-btn input { position: absolute; opacity: 0; pointer-events: none; }
+.os-btn span {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 16px 8px 12px;
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-weight: 900; font-size: 18px; letter-spacing: -.3px;
+  transition: translate .1s, box-shadow .1s, background .15s;
+}
+.os-btn svg { width: 34px; height: 34px; }
+.os-btn:hover span { translate: -2px -2px; box-shadow: 6px 6px 0 var(--ink); }
+.os-btn input:checked + span { background: var(--primary); translate: 3px 3px; box-shadow: 1px 1px 0 var(--ink); }
+.os-btn input:focus-visible + span { outline: 3px dashed var(--ink); outline-offset: 4px; }
+
+.beta-input {
+  width: 100%;
+  font: 600 16px "Inter", sans-serif; /* 16px stops iOS zooming in */
+  color: var(--ink);
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.beta-input:focus { outline: none; box-shadow: 4px 4px 0 var(--orange); }
+
+.beta-msg { min-height: 20px; margin: 8px 0 10px; font-size: 14px; font-weight: 700; color: #c2410c; }
+
+.beta-submit {
+  width: 100%;
+  font: 900 20px "Inter", sans-serif;
+  letter-spacing: -.3px;
+  color: var(--ink);
+  background: var(--orange);
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 14px;
+  cursor: pointer;
+  transition: translate .1s, box-shadow .1s;
+}
+.beta-submit:hover { translate: -2px -2px; box-shadow: 7px 7px 0 var(--ink); }
+.beta-submit:active { translate: 5px 5px; box-shadow: 0 0 0 var(--ink); }
+.beta-submit:disabled { opacity: .6; cursor: progress; }
+.beta-done .beta-sub { margin-bottom: 22px; }
+
+@media (max-width: 600px) {
+  .t-beta span { font-size: 25px; }
+  .t-beta .tag { right: 18px; }
+  .beta { padding: 24px 18px 18px; }
+}
+
 /* ---------- Collage ---------- */
 
 .collage { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
